@@ -75,9 +75,9 @@ def bool_retreive(dp):# 传入的参数是倒排记录表，打印布尔检索�
     dp_rm_loc ={word:list(dp[word].keys()) for word in list(dp.keys())}
     print("无位置信息的倒排记录表如下：")
     print(dp_rm_loc)
-    menuver = 'and'  # 布尔检索的操作
-    input1 = "公司"
-    input2 = "指出"
+    menuver = 'or not'  # 布尔检索的操作
+    input1 = "预计"
+    input2 = "风险"
     input1 = input("请输入短语1")
     input2 = input("请输入短语2")
     menuver = input("请输入指令")
@@ -97,9 +97,11 @@ def bool_retreive(dp):# 传入的参数是倒排记录表，打印布尔检索�
         print(ans)
     if menuver == 'or not':
         ans = []
-        for i in list(set(dp_rm_loc[input1] + dp_rm_loc[input2])):
+        for i in range(len(get_all_file(doc_path))):
             if i in dp_rm_loc[input1] or i not in dp_rm_loc[input2]:
                 ans.append(i)
+        #  除去第二个
+
         print(ans)
 
 
